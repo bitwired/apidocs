@@ -338,7 +338,7 @@
 </thead><tbody>
 <tr>
 <td>email</td>
-<td>是</td>
+<td>是　</td>
 <td>String</td>
 <td>邮箱</td>
 </tr>
@@ -432,7 +432,7 @@
 </thead><tbody>
 <tr>
 <td>phone</td>
-<td>否</td>
+<td>否　</td>
 <td>String</td>
 <td>手机号 当type为LOGIN时无需填此参数</td>
 </tr>
@@ -507,7 +507,7 @@
 </thead><tbody>
 <tr>
 <td>phone</td>
-<td>否</td>
+<td>否　</td>
 <td>String</td>
 <td>手机号 绑定手机号时必填 其他情况无需填</td>
 </tr>
@@ -535,10 +535,6 @@
 <p><strong>HTTP Request</strong></p>
 
 <p><code>POST /country/list</code></p>
-
-<aside class="notice">
-此接口有两个地方会用到，一个是用手机号注册时选国家区号（需筛选can_register=true时的数据，前期有可能手机号注册只开通部分国家），另一个地方是实名认证选择国家时（无需筛选）
-</aside>
 
 <p><strong>请求参数</strong></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -608,6 +604,10 @@
 <td>是否支持手机注册 在注册页面选择国家区号时需筛选此值为true的数据</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+此接口有两个地方会用到，一个是用手机号注册时选国家区号（需筛选can_register=true时的数据，前期有可能手机号注册只开通部分国家），另一个地方是实名认证选择国家时（无需筛选）
+</aside>
 
       </div>
       <div class="dark-box">

@@ -1,5 +1,5 @@
 ---
-title: BitFlex API Reference
+title: BitWired API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - java
@@ -8,7 +8,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='#'>English Version</a>
-  - <a href='#'>BitFlex Exchange</a>
+  - <a href='#'>BitWired Exchange</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 # includes:
@@ -19,7 +19,7 @@ search: true
 
 # 介绍
 
-欢迎使用 BitFlex APIs 和 Websocket官方文档！
+欢迎使用 BitWired APIs 和 Websocket官方文档！
 
 如果您在使用API的过程中遇到问题需要帮助，请联系我们！
 

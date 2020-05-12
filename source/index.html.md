@@ -129,8 +129,9 @@ session_id | 是 | String | 人机验证session_id app端只传此参数
 sig | 否 | String | 人机验证签名 web端必填
 token | 否 | String | 人机验证token web端必填
 scene | 否 | String | 人机验证使用场景 web端需传ic_message
-<aside class="warning">
-注意：短信验证码尚未接通运营商，调完发送之后不会真正收到短信，但后端统一做了临时处理，前端统一填654321即可
+
+<aside class="notice">
+短信验证码尚未接通运营商，调完发送之后不会真正收到短信，但后端统一做了临时处理，前端统一填654321即可
 </aside>
 
 ```json
@@ -141,3 +142,84 @@ scene | 否 | String | 人机验证使用场景 web端需传ic_message
 }
 ```
 **响应结果**
+
+## 发送短信验证码（登录状态下）
+
+**HTTP Request**
+
+`POST /user/message/sms`
+
+**请求参数**
+
+参数 | 必选 | 类型 | 说明
+------------ | ------------ | ------------ | ------------ 
+phone | 否 | String | 手机号 绑定手机号时必填 其他情况无需填
+type  | 是 | String | BIND_PHONE 邮箱注册绑定手机<br/>BIND_EMAIL 手机注册绑定邮箱<br/>RESET_PIN重置资金密码<br/>WITHDRAW申请提币<br/>ADD_WITHDRAW_ADDRESS添加提币地址<br/>CREATE_API创建api<br/>UPDATE_API修改API<br/>DELETE_API删除api<br/>ADD_SUB_USER添加子账户<br/>DELETE_SUB_USER删除子账户<br/>RESET_SUB_PASSWD重置子账户密码<br/>CHANGE_LOGIN_PASSWD修改登录密码<br/>BIND_GOOGLE绑定谷歌
+area_code | 否 | String | 手机号区号 绑定手机号时必填
+
+```json
+{
+  "code": 0,
+  "message": "ok",
+  "data": true
+}
+```
+**响应结果**
+
+## 发送邮箱验证码（登录状态下）
+
+**HTTP Request**
+
+`POST /country/list`
+
+<aside class="notice">
+此接口有两个地方会用到，一个是用手机号注册时选国家区号（需筛选can_register=true时的数据，前期有可能手机号注册只开通部分国家），另一个地方是实名认证选择国家时（无需筛选）
+</aside>
+
+**请求参数**
+
+```json
+{
+  "code": 0,
+  "message": "ok",
+  "data": [
+    {
+      "id": 3,
+      "area_code": "84",
+      "name_cn": "越南",
+      "name_en": "Vietnam",
+      "sort": 1,
+      "code": "VN",
+      "can_register": true
+    },
+    {
+      "id": 2,
+      "area_code": "82",
+      "name_cn": "韩国",
+      "name_en": "Korea",
+      "sort": 2,
+      "code": "KR",
+      "can_register": true
+    },
+    {
+      "id": 1,
+      "area_code": "86",
+      "name_cn": "中国",
+      "name_en": "China",
+      "sort": 3,
+      "code": "CN",
+      "can_register": true
+    }
+  ]
+}
+```
+**响应结果**
+
+返回字段 | 说明
+------------ | ------------ 
+id | 国家ID
+area_code | 国家区号代码 如中国86
+name_cn |  中文名称
+name_en | 英文名称 
+code | 国家代码 如中国CN 
+can_register | 是否支持手机注册 在注册页面选择国家区号时需筛选此值为true的数据 

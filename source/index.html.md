@@ -55,7 +55,7 @@ search: true
 ```
 
 字段 | 说明
----- | ---- 
+------------ | ------------ 
 device_id | 设备ID
 app_version | 版本号
 os_version | 系统版本号
@@ -72,8 +72,8 @@ client_type | ANDROID或IOS
 **请求参数**
 
 参数 | 必选 | 类型 | 说明
----- | ---- | ---- | ---- 
-email | 是　| String | 邮箱
+------------ | ------------ | ------------ | ------------
+email | 是 | String | 邮箱
 type  | 是 | String | 只有REGISTER和RESET_LOGIN_PASSWD两个值，分别代表注册和忘记登录密码
 session_id | 是  | String | 人机验证session_id app端只传此参数
 sig   | 否  | String | 人机验证签名 web端必填
@@ -98,7 +98,7 @@ scene | 否  | String | 人机验证使用场景 web端必填ic_message
 **请求参数**
 
 参数 | 必选 | 类型 | 说明
----- | ---- | ---- | ---- 
+------------ | ------------ | ------------ | ------------ 
 email | 否 | String | 绑定邮箱时必填
 type  | 是 | String | 取值有BIND_EMAIL 绑定邮箱<br/>BIND_PHONE 绑定手机<br/>BIND_GOOGLE 绑定谷歌<br/>CHANGE_LOGIN_PASSWD 修改登录密码<br/> SET_ANTI_PHISHING_CODE 设置防钓鱼码<br/> WITHDRAW 提币<br/> ADD_WITHDRAW_ADDRESS 添加提币地址<br/>
 
@@ -120,9 +120,18 @@ type  | 是 | String | 取值有BIND_EMAIL 绑定邮箱<br/>BIND_PHONE 绑定手
 **请求参数**
 
 参数 | 必选 | 类型 | 说明
----- | ---- | ---- | ---- 
-phone | 否 | String | 绑定邮箱时必填
-type  | 是 | String | 取值有BIND_EMAIL 绑定邮箱<br/>BIND_PHONE 绑定手机<br/>BIND_GOOGLE 绑定谷歌<br/>CHANGE_LOGIN_PASSWD 修改登录密码<br/> SET_ANTI_PHISHING_CODE 设置防钓鱼码<br/> WITHDRAW 提币<br/> ADD_WITHDRAW_ADDRESS 添加提币地址<br/>
+------------ | ------------ | ------------ | ------------ 
+phone | 否 | String | 手机号 当type为LOGIN时无需填此参数
+type  | 是 | String | 只有REGISTER LOGIN RESET_LOGIN_PASSWD三个值，分别代表注册 登录 忘记登录密码
+area_code | 否 | String | 手机号区号 注册时此值必填
+sms_token | 否 | String | 发送登录验证码时必填 取值来自登录接口中返回的sms_token
+session_id | 是 | String | 人机验证session_id app端只传此参数
+sig | 否 | String | 人机验证签名 web端必填
+token | 否 | String | 人机验证token web端必填
+scene | 否 | String | 人机验证使用场景 web端需传ic_message
+<aside class="warning">
+注意：短信验证码尚未接通运营商，调完发送之后不会真正收到短信，但后端统一做了临时处理，前端统一填654321即可
+</aside>
 
 ```json
 {

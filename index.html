@@ -332,7 +332,7 @@
 </thead><tbody>
 <tr>
 <td>email</td>
-<td>是　</td>
+<td>是</td>
 <td>String</td>
 <td>邮箱</td>
 </tr>
@@ -428,15 +428,55 @@
 <td>phone</td>
 <td>否</td>
 <td>String</td>
-<td>绑定邮箱时必填</td>
+<td>手机号 当type为LOGIN时无需填此参数</td>
 </tr>
 <tr>
 <td>type</td>
 <td>是</td>
 <td>String</td>
-<td>取值有BIND_EMAIL 绑定邮箱<br/>BIND_PHONE 绑定手机<br/>BIND_GOOGLE 绑定谷歌<br/>CHANGE_LOGIN_PASSWD 修改登录密码<br/> SET_ANTI_PHISHING_CODE 设置防钓鱼码<br/> WITHDRAW 提币<br/> ADD_WITHDRAW_ADDRESS 添加提币地址<br/></td>
+<td>只有REGISTER LOGIN RESET_LOGIN_PASSWD三个值，分别代表注册 登录 忘记登录密码</td>
+</tr>
+<tr>
+<td>area_code</td>
+<td>否</td>
+<td>String</td>
+<td>手机号区号 注册时此值必填</td>
+</tr>
+<tr>
+<td>sms_token</td>
+<td>否</td>
+<td>String</td>
+<td>发送登录验证码时必填 取值来自登录接口中返回的sms_token</td>
+</tr>
+<tr>
+<td>session_id</td>
+<td>是</td>
+<td>String</td>
+<td>人机验证session_id app端只传此参数</td>
+</tr>
+<tr>
+<td>sig</td>
+<td>否</td>
+<td>String</td>
+<td>人机验证签名 web端必填</td>
+</tr>
+<tr>
+<td>token</td>
+<td>否</td>
+<td>String</td>
+<td>人机验证token web端必填</td>
+</tr>
+<tr>
+<td>scene</td>
+<td>否</td>
+<td>String</td>
+<td>人机验证使用场景 web端需传ic_message</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+注意：短信验证码尚未接通运营商，调完发送之后不会真正收到短信，但后端统一做了临时处理，前端统一填654321即可
+</aside>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">

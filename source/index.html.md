@@ -73,7 +73,7 @@ client_type | ANDROID或IOS
 
 参数 | 必选 | 类型 | 说明
 ------------ | ------------ | ------------ | ------------
-email | 是 | String | 邮箱
+email | 是　| String | 邮箱
 type  | 是 | String | 只有REGISTER和RESET_LOGIN_PASSWD两个值，分别代表注册和忘记登录密码
 session_id | 是  | String | 人机验证session_id app端只传此参数
 sig   | 否  | String | 人机验证签名 web端必填
@@ -121,7 +121,7 @@ type  | 是 | String | 取值有BIND_EMAIL 绑定邮箱<br/>BIND_PHONE 绑定手
 
 参数 | 必选 | 类型 | 说明
 ------------ | ------------ | ------------ | ------------ 
-phone | 否 | String | 手机号 当type为LOGIN时无需填此参数
+phone | 否　| String | 手机号 当type为LOGIN时无需填此参数
 type  | 是 | String | 只有REGISTER LOGIN RESET_LOGIN_PASSWD三个值，分别代表注册 登录 忘记登录密码
 area_code | 否 | String | 手机号区号 注册时此值必填
 sms_token | 否 | String | 发送登录验证码时必填 取值来自登录接口中返回的sms_token
@@ -153,7 +153,7 @@ scene | 否 | String | 人机验证使用场景 web端需传ic_message
 
 参数 | 必选 | 类型 | 说明
 ------------ | ------------ | ------------ | ------------ 
-phone | 否 | String | 手机号 绑定手机号时必填 其他情况无需填
+phone | 否　| String | 手机号 绑定手机号时必填 其他情况无需填
 type  | 是 | String | BIND_PHONE 邮箱注册绑定手机<br/>BIND_EMAIL 手机注册绑定邮箱<br/>RESET_PIN重置资金密码<br/>WITHDRAW申请提币<br/>ADD_WITHDRAW_ADDRESS添加提币地址<br/>CREATE_API创建api<br/>UPDATE_API修改API<br/>DELETE_API删除api<br/>ADD_SUB_USER添加子账户<br/>DELETE_SUB_USER删除子账户<br/>RESET_SUB_PASSWD重置子账户密码<br/>CHANGE_LOGIN_PASSWD修改登录密码<br/>BIND_GOOGLE绑定谷歌
 area_code | 否 | String | 手机号区号 绑定手机号时必填
 
@@ -171,10 +171,6 @@ area_code | 否 | String | 手机号区号 绑定手机号时必填
 **HTTP Request**
 
 `POST /country/list`
-
-<aside class="notice">
-此接口有两个地方会用到，一个是用手机号注册时选国家区号（需筛选can_register=true时的数据，前期有可能手机号注册只开通部分国家），另一个地方是实名认证选择国家时（无需筛选）
-</aside>
 
 **请求参数**
 
@@ -223,3 +219,7 @@ name_cn |  中文名称
 name_en | 英文名称 
 code | 国家代码 如中国CN 
 can_register | 是否支持手机注册 在注册页面选择国家区号时需筛选此值为true的数据 
+
+<aside class="notice">
+此接口有两个地方会用到，一个是用手机号注册时选国家区号（需筛选can_register=true时的数据，前期有可能手机号注册只开通部分国家），另一个地方是实名认证选择国家时（无需筛选）
+</aside>

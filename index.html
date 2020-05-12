@@ -249,6 +249,12 @@
                   <li>
                     <a href="#7e9f215d27" class="toc-h2 toc-link" data-title="发送短信验证码(无登录状态下)">发送短信验证码(无登录状态下)</a>
                   </li>
+                  <li>
+                    <a href="#85dfb895c7" class="toc-h2 toc-link" data-title="发送短信验证码（登录状态下）">发送短信验证码（登录状态下）</a>
+                  </li>
+                  <li>
+                    <a href="#bb33947ba1-2" class="toc-h2 toc-link" data-title="发送邮箱验证码（登录状态下）">发送邮箱验证码（登录状态下）</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -474,8 +480,8 @@
 </tr>
 </tbody></table>
 
-<aside class="warning">
-注意：短信验证码尚未接通运营商，调完发送之后不会真正收到短信，但后端统一做了临时处理，前端统一填654321即可
+<aside class="notice">
+短信验证码尚未接通运营商，调完发送之后不会真正收到短信，但后端统一做了临时处理，前端统一填654321即可
 </aside>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -484,6 +490,124 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><strong>响应结果</strong></p>
+<h2 id='85dfb895c7'>发送短信验证码（登录状态下）</h2>
+<p><strong>HTTP Request</strong></p>
+
+<p><code>POST /user/message/sms</code></p>
+
+<p><strong>请求参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>必选</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>phone</td>
+<td>否</td>
+<td>String</td>
+<td>手机号 绑定手机号时必填 其他情况无需填</td>
+</tr>
+<tr>
+<td>type</td>
+<td>是</td>
+<td>String</td>
+<td>BIND_PHONE 邮箱注册绑定手机<br/>BIND_EMAIL 手机注册绑定邮箱<br/>RESET_PIN重置资金密码<br/>WITHDRAW申请提币<br/>ADD_WITHDRAW_ADDRESS添加提币地址<br/>CREATE_API创建api<br/>UPDATE_API修改API<br/>DELETE_API删除api<br/>ADD_SUB_USER添加子账户<br/>DELETE_SUB_USER删除子账户<br/>RESET_SUB_PASSWD重置子账户密码<br/>CHANGE_LOGIN_PASSWD修改登录密码<br/>BIND_GOOGLE绑定谷歌</td>
+</tr>
+<tr>
+<td>area_code</td>
+<td>否</td>
+<td>String</td>
+<td>手机号区号 绑定手机号时必填</td>
+</tr>
+</tbody></table>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>响应结果</strong></p>
+<h2 id='bb33947ba1-2'>发送邮箱验证码（登录状态下）</h2>
+<p><strong>HTTP Request</strong></p>
+
+<p><code>POST /country/list</code></p>
+
+<aside class="notice">
+此接口有两个地方会用到，一个是用手机号注册时选国家区号（需筛选can_register=true时的数据，前期有可能手机号注册只开通部分国家），另一个地方是实名认证选择国家时（无需筛选）
+</aside>
+
+<p><strong>请求参数</strong></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"area_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"84"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name_cn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"越南"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name_en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vietnam"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VN"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"can_register"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"area_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"82"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name_cn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"韩国"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name_en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Korea"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"can_register"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"area_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name_cn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"中国"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name_en"</span><span class="p">:</span><span class="w"> </span><span class="s2">"China"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sort"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CN"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"can_register"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong>响应结果</strong></p>
+
+<table><thead>
+<tr>
+<th>返回字段</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>国家ID</td>
+</tr>
+<tr>
+<td>area_code</td>
+<td>国家区号代码 如中国86</td>
+</tr>
+<tr>
+<td>name_cn</td>
+<td>中文名称</td>
+</tr>
+<tr>
+<td>name_en</td>
+<td>英文名称</td>
+</tr>
+<tr>
+<td>code</td>
+<td>国家代码 如中国CN</td>
+</tr>
+<tr>
+<td>can_register</td>
+<td>是否支持手机注册 在注册页面选择国家区号时需筛选此值为true的数据</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
